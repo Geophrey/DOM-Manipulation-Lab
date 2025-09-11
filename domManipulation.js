@@ -1,10 +1,22 @@
+// First Lab
 // Part 1
 // Menu data structure
 const menuLinks = [
-  { text: 'about', href: '/about' },
-  { text: 'catalog', href: '/catalog' },
-  { text: 'orders', href: '/orders' },
-  { text: 'account', href: '/account' },
+  {text: 'about', href: '/about'},
+  {text: 'catalog', href: '#', subLinks: [
+    {text: 'all', href: '/catalog/all'},
+    {text: 'top selling', href: '/catalog/top'},
+    {text: 'search', href: '/catalog/search'},
+  ]},
+  {text: 'orders', href: '#' , subLinks: [
+    {text: 'new', href: '/orders/new'},
+    {text: 'pending', href: '/orders/pending'},
+    {text: 'history', href: '/orders/history'},
+  ]},
+  {text: 'account', href: '#', subLinks: [
+    {text: 'profile', href: '/account/profile'},
+    {text: 'sign out', href: '/account/signout'},
+  ]},
 ];
 
 // const mainEl = document.querySelector('main')
@@ -35,12 +47,12 @@ document.body.appendChild(mainEl);
 
 // Part 2: Creating a Menu Bar
 
-const navBar = document.getElementById('top-menu')
-navBar.style.height = '100%'
-navBar.style.backgroundColor = 'var(--top-menu-bg)';
-navBar.classList.add('flex-around')
+const topMenuEl = document.getElementById('top-menu')
+topMenuEl.style.height = '100%'
+topMenuEl.style.backgroundColor = 'var(--top-menu-bg)';
+topMenuEl.classList.add('flex-around')
 
-console.log(navBar);
+console.log(topMenuEl);
 
 // Part 3: Adding Menu Buttons
 
@@ -50,6 +62,28 @@ for(let menuLink of menuLinks) {
     const link=document.createElement("a");
     link.textContent=menuLink["text"]; 
     link.href=menuLink["href"]; 
-    navBar.appendChild(link);
+    topMenuEl.appendChild(link);
 }
 
+// 2nd Lab
+// Part 3
+
+const subMenuEl = document.getElementById("sub-menu")
+subMenuEl.style.height = '100%'
+subMenuEl.style.backgroundColor = 'var(--sub-menu-bg)'
+subMenuEl.classList.add('flex-around')
+
+subMenuEl.style.position = 'absolute'
+subMenuEl.style.top = '0'
+
+// Part 4
+
+const topMenuLinks = topMenuEl.querySelectorAll("a")
+function handleClick(event){
+    console.log(event.target.localName)
+    event.preventDefault()
+    if (event.target.localName !== "a") {
+        return
+    }
+}
+topMenuEl.addEventListener("click", handleClick)
