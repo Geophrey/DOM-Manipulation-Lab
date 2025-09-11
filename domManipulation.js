@@ -1,6 +1,6 @@
 // Part 1
 // Menu data structure
-var menuLinks = [
+const menuLinks = [
   { text: 'about', href: '/about' },
   { text: 'catalog', href: '/catalog' },
   { text: 'orders', href: '/orders' },
@@ -43,3 +43,13 @@ navBar.classList.add('flex-around')
 console.log(navBar);
 
 // Part 3: Adding Menu Buttons
+
+let a = document.createElement("a")
+
+for(let menuLink of menuLinks) {
+    const link=document.createElement("a");
+    link.textContent=menuLink["text"]; 
+    link.href=menuLink["href"]; 
+    navBar.appendChild(link);
+}
+
