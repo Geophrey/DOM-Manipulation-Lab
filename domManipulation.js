@@ -98,6 +98,7 @@ function handleClick(event) {
   }
 
   event.target.classList.toggle("active");
+  //subMenuEl.style.position.toggle("absolute")
   for (let link of topMenuLinks) {
     if (link !== event.target && link.classList.contains("active")) {
       link.classList.remove("active");
@@ -106,13 +107,20 @@ function handleClick(event) {
     //   link.classList.remove("active");
     // }
   }
- const link = event.target
+//  const link = event.target
 //   for (let link of menuLinks) {
-    if (link.hasOwnProperty("subLinks")) {
+// console.dir(event.target)
+// console.log(event.target.innerHTML)
+// console.log(event.target.hasOwnProperty("subLinks")) (event.target.innerHTML !== "about") || (event.target.classList.contains("active")) == false)
+console.log(event.target.classList.contains("active"))
+    if ((event.target.innerHTML !== "about") && (event.target.classList.contains("active"))) {
         console.log("has sublink");
+        subMenuEl.style.top = "100%";
     }
     else {
         console.log("no sublink")
+        subMenuEl.style.top = "0%";
+        subMenuEl.style.position = "absolute";
     }
 
 //   }
